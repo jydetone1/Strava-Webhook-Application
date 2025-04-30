@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { WebhookService } from './webhook.service';
 import { WebhookController } from './webhook.controller';
-import { ActivityModule } from '../../activity/activity.module';
+import { ActivityModule } from '../activity/activity.module';
 import { ConfigModule } from '../common/config/config.module';
 
 @Module({

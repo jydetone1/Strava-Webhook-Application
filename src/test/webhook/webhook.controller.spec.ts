@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { WebhookController } from '../../activity/webhook/webhook.controller';
-import { WebhookService } from '../../activity/webhook/webhook.service';
-import { ConfigService } from '../../activity/common/config/config.service';
+import { WebhookController } from '../../webhook/webhook.controller';
+import { WebhookService } from '../../webhook/webhook.service';
+import { ConfigService } from '../../common/config/config.service';
 import { ActivityService } from '../../activity/activity.service';
 
 describe('WebhookController', () => {

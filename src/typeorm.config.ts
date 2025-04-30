@@ -1,8 +1,8 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { Activity } from './activity/entities/activity.entity';
-import { User } from './activity/auth/user.entity';
-import { ConfigService } from './activity/common/config/config.service';
+import { User } from './auth/user.entity';
+import { ConfigService } from './common/config/config.service';
 
 const configService = new ConfigService();
 

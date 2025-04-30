@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ActivityService } from '../../activity/activity.service';
 import { ActivityRepository } from '../../activity/activity.repository';
-import { ConfigService } from '../../activity/common/config/config.service';
-import { AuthService } from '../../activity/auth/auth.service';
-import { WebhookEventDto } from '../../activity/webhook/dto/webhook-event.dto';
+import { ConfigService } from '../../common/config/config.service';
+import { AuthService } from '../../auth/auth.service';
+import { WebhookEventDto } from '../../webhook/dto/webhook-event.dto';
 import { HttpException, HttpStatus } from '@nestjs/common';
 import axios from 'axios';
 

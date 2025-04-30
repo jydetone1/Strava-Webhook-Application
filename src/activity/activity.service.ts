@@ -1,15 +1,17 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { ActivityRepository } from './activity.repository';
-import { WebhookEventDto } from './webhook/dto/webhook-event.dto';
+import { WebhookEventDto } from '../webhook/dto/webhook-event.dto';
 import axios from 'axios';
-import { AuthService } from './auth/auth.service';
+import { AuthService } from '../auth/auth.service';
 import { Activity } from './entities/activity.entity';
+import { ConfigService } from '../common/config/config.service';
 
 @Injectable()
 export class ActivityService {
   constructor(
     private activityRepository: ActivityRepository,
     private authService: AuthService,
+    private configService: ConfigService,
   ) {}
 
   async findById(id: number): Promise<Activity | null> {
@@ -35,7 +37,8 @@ export class ActivityService {
   }
 
   private async fetchActivity(id: number, accessToken: string): Promise<any> {
-    const url = `https://www.strava.com/api/v3/activities/${id}`;
+    const stravaBaseUrl = this.configService.get('STRAVA_API_BASE');
+    const url = `${stravaBaseUrl}/activities/${id}`;
 
     try {
       const response = await axios.get(url, {

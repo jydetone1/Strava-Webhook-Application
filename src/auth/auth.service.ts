@@ -17,7 +17,7 @@ export class AuthService {
     expires_at: number;
     athlete: { id: number };
   }> {
-    const url = 'https://www.strava.com/oauth/token';
+    const url = this.configService.get('STRAVA_AUTH_TOKEN_BASE');
     const payload = {
       client_id: this.configService.get('STRAVA_CLIENT_ID'),
       client_secret: this.configService.get('STRAVA_CLIENT_SECRET'),
@@ -72,7 +72,7 @@ export class AuthService {
     refresh_token: string;
     expires_at: number;
   }> {
-    const url = 'https://www.strava.com/oauth/token';
+    const url = this.configService.get('STRAVA_AUTH_TOKEN_BASE');
     const payload = {
       client_id: this.configService.get('STRAVA_CLIENT_ID'),
       client_secret: this.configService.get('STRAVA_CLIENT_SECRET'),
@@ -99,5 +99,18 @@ export class AuthService {
         HttpStatus.BAD_REQUEST,
       );
     }
+  }
+
+  getAuthorizationUrl(): string {
+    const clientId = this.configService.get('STRAVA_CLIENT_ID');
+    const redirectUri = this.configService.get('STRAVA_REDIRECT_URI');
+    const authBase = this.configService.get('STRAVA_AUTH_BASE');
+    const params = new URLSearchParams({
+      client_id: clientId,
+      redirect_uri: redirectUri,
+      response_type: 'code',
+      scope: 'activity:read_all',
+    });
+    return `${authBase}/authorize?${params.toString()}`;
   }
 }

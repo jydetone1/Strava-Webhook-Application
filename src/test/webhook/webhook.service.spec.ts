@@ -1,10 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { WebhookService } from '../../activity/webhook/webhook.service';
+import { WebhookService } from '../../webhook/webhook.service';
 import { ActivityService } from '../../activity/activity.service';
 import { ActivityRepository } from '../../activity/activity.repository';
-import { AuthService } from '../../activity/auth/auth.service';
-import { ConfigModule } from '../../activity/common/config/config.module';
-import { WebhookEventDto } from '../../activity/webhook/dto/webhook-event.dto';
+import { AuthService } from '../../auth/auth.service';
+import { ConfigModule } from '../../common/config/config.module';
+import { WebhookEventDto } from '../../webhook/dto/webhook-event.dto';
 import { HttpException, HttpStatus } from '@nestjs/common';
 import axios from 'axios';
 

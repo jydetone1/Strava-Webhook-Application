@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AuthService } from '../../activity/auth/auth.service';
-import { ConfigService } from '../../activity/common/config/config.service';
-import { UserRepository } from '../../activity/auth/user.repository';
+import { AuthService } from '../../auth/auth.service';
+import { ConfigService } from '../../common/config/config.service';
+import { UserRepository } from '../../auth/user.repository';
 import axios from 'axios';
 
 jest.mock('axios');

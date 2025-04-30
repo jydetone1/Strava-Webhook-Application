@@ -1,6 +1,6 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { ConfigService } from '../common/config/config.service';
-import { ActivityService } from '../../activity/activity.service';
+import { ActivityService } from '../activity/activity.service';
 import axios from 'axios';
 import { WebhookEventDto } from './dto/webhook-event.dto';
 
@@ -12,7 +12,7 @@ export class WebhookService {
   ) {}
 
   async createSubscription(): Promise<any> {
-    const url = 'https://www.strava.com/api/v3/push_subscriptions';
+    const url = this.configService.get('STRAVA_SUBSCRIPTIONS');
     const payload = {
       client_id: this.configService.get('STRAVA_CLIENT_ID'),
       client_secret: this.configService.get('STRAVA_CLIENT_SECRET'),
