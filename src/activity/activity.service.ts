@@ -24,7 +24,6 @@ export class ActivityService {
     );
 
     const activity = await this.fetchActivity(event.object_id, accessToken);
-
     const activityEntity = new Activity();
     activityEntity.id = activity.id;
     activityEntity.userId = activity.athlete.id;
